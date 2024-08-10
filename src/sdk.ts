@@ -89,6 +89,7 @@ class KintoSDK {
 
     return new Promise((resolve, reject) => {
       const handleMessage = (event: MessageEvent) => {
+        if (event.origin !== this.kintoUrl) return;
         if (event.data.type === 'KINTO_TX_SUCCESS') {
           window.removeEventListener('message', handleMessage);
           resolve(event.data.hash);
