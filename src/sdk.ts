@@ -1,7 +1,5 @@
 import { TxCall, KintoAccountInfo } from './utils/';
 
-const IS_DEV = window.location.origin.includes('dev.kinto.xyz');
-
 // Popup Dimensions
 const width = 400;
 const height = 700;
@@ -13,47 +11,52 @@ class KintoSDK {
   private modalId: string;
 
   constructor(appAddress: string) {
-    this.kintoUrl = IS_DEV ? 'http://localhost:8888' : 'https://engen.kinto.xyz';
+    this.kintoUrl = 'https://engen.kinto.xyz';
     this.appAddress = appAddress;
     this.iframeId = 'kinto-sdk-iframe';
     this.modalId = 'kinto-sdk-modal';
   }
 
   async connect():Promise<KintoAccountInfo> {
-    console.log('connecting', this.kintoUrl);
-    // Open an iframe to check for existing account and initiate connection
+    let iframe = document.getElementById(this.iframeId) as HTMLIFrameElement;
+    let modal = document.getElementById(this.modalId) as HTMLDivElement;
+    if (!iframe || !modal) {
+      console.log('connecting', this.kintoUrl);
+      // Open an iframe to check for existing account and initiate connection
 
-    const iframe = document.createElement('iframe');
-    iframe.id = 'kinto-sdk-iframe';
-    iframe.src = `${this.kintoUrl}/connect?appDomain=${encodeURIComponent(window.location.origin)}&appAddress=${this.appAddress}`;
+      iframe = document.createElement('iframe');
+      iframe.id = 'kinto-sdk-iframe';
+      iframe.src = `${this.kintoUrl}/connect?appDomain=${encodeURIComponent(window.location.origin)}&appAddress=${this.appAddress}`;
+      iframe.allow = 'publickey-credentials-get *'; // Allow WebAuthn API
 
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.border = 'none';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
 
-    // Create a modal container
-    const modal = document.createElement('div');
-    modal.id = 'kinto-sdk-modal';
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100vw';
-    modal.style.height = '100vh';
-    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    modal.style.display = 'none';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
+      // Create a modal container
+      modal = document.createElement('div');
+      modal.id = 'kinto-sdk-modal';
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100vw';
+      modal.style.height = '100vh';
+      modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      modal.style.display = 'none';
+      modal.style.justifyContent = 'center';
+      modal.style.alignItems = 'center';
 
-    // Create a content container for the iframe
-    const modalContent = document.createElement('div');
-    modalContent.style.width = '100%';
-    modalContent.style.height = '100%';
-    modalContent.style.backgroundColor = 'white';
-    modalContent.style.borderRadius = '8px';
-    modalContent.style.overflow = 'hidden';
-    modalContent.appendChild(iframe);
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
+      // Create a content container for the iframe
+      const modalContent = document.createElement('div');
+      modalContent.style.width = '100%';
+      modalContent.style.height = '100%';
+      modalContent.style.backgroundColor = 'white';
+      modalContent.style.borderRadius = '8px';
+      modalContent.style.overflow = 'hidden';
+      modalContent.appendChild(iframe);
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
     return new Promise((resolve, reject) => {
       const handleMessage = (event: MessageEvent) => {
         if (event.origin !== this.kintoUrl) return;

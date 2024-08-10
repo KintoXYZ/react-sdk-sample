@@ -28,6 +28,7 @@ const kinto = defineChain({
 const KintoConnect = () => {
   const [accountInfo, setAccountInfo] = useState<KintoAccountInfo | undefined>(undefined);
   const [counter, setCounter] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
   const kintoSDK = createKintoSDK('0x14A1EC9b43c270a61cDD89B6CbdD985935D897fE');
   const counterAddress = "0x14A1EC9b43c270a61cDD89B6CbdD985935D897fE" as Address;
 
@@ -59,7 +60,10 @@ const KintoConnect = () => {
       functionName: 'increment',
       args: []
     });
-    kintoSDK.sendTransaction([{ to: counterAddress, data, value: BigInt(0) }]);
+    setLoading(true);
+    const response = await kintoSDK.sendTransaction([{ to: counterAddress, data, value: BigInt(0) }]);
+    await fetchCounter();
+    setLoading(false);
   }
 
   useEffect(() => {
