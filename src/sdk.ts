@@ -21,9 +21,6 @@ class KintoSDK {
     let iframe = document.getElementById(this.iframeId) as HTMLIFrameElement;
     let modal = document.getElementById(this.modalId) as HTMLDivElement;
     if (!iframe || !modal) {
-      console.log('connecting', this.kintoUrl);
-      // Open an iframe to check for existing account and initiate connection
-
       iframe = document.createElement('iframe');
       iframe.id = 'kinto-sdk-iframe';
       iframe.src = `${this.kintoUrl}/connect?appDomain=${encodeURIComponent(window.location.origin)}&appAddress=${this.appAddress}`;
@@ -92,11 +89,11 @@ class KintoSDK {
 
     return new Promise((resolve, reject) => {
       const handleMessage = (event: MessageEvent) => {
-        if (event.data.type === 'KINTO_TX_ERROR') {
+        if (event.data.type === 'KINTO_TX_SUCCESS') {
           window.removeEventListener('message', handleMessage);
           resolve(event.data.hash);
           modal.style.display = 'none';
-        } else if (event.data.type === 'KINTO_TX_SUCCESS') {
+        } else if (event.data.type === 'KINTO_TX_ERROR') {
           window.removeEventListener('message', handleMessage);
           reject(new Error(event.data.error));
           modal.style.display = 'none';

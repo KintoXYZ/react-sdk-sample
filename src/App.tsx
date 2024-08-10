@@ -66,13 +66,14 @@ const KintoConnect = () => {
     setLoading(false);
   }
 
+  async function fetchAccountInfo() {
+    setAccountInfo(await kintoSDK.connect());
+  };
+
   useEffect(() => {
-    const fetchAccountInfo = async () => {
-      setAccountInfo(await kintoSDK.connect());
-    };
     fetchAccountInfo();
     fetchCounter();
-  }, []);
+  });
 
   // todo: add info about the dev portal and link
   return (
@@ -86,11 +87,6 @@ const KintoConnect = () => {
           )}
           {accountInfo.walletAddress && (
             <p>Connected with wallet address: {accountInfo.walletAddress}</p>
-          )}
-          {!accountInfo.appKey && (
-            <>
-              <p>Need to approve this application before sending the first transaction</p>
-            </>
           )}
           {accountInfo.appKey && (
             <>
