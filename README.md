@@ -8,6 +8,12 @@ This is a sample application demonstrating the integration of the Kinto Wallet S
 - [Usage](#usage)
 - [Links](#links)
 
+## Prerequisites
+
+Before using the sample app, ensure you have completed the following steps:
+
+**Kinto Wallet**: In order to test the sample app, you need to have a Kinto account. Create an account by visiting [Kinto Onboarding](https://engen.kinto.xyz/onboarding).
+
 ## Installation
 
 To get started with the sample app, follow these steps:
@@ -39,6 +45,12 @@ yarn start
 ## Usage
 
 Once the application is running, you can explore the features provided by the Kinto Wallet SDK. This sample app demonstrates how to connect to a Kinto wallet, send transactions, and manage wallet interactions.
+
+### Using your application
+
+1. **Developer Account**: Create a developer account, deploy a contract, and create the application. Use your main contract address as the app address. Visit [Kinto Developers](https://engen.kinto.xyz/developers) to get started.
+
+2. **Set the App Address**: Ensure you have set the app address in `App.tsx` in the `counterAddress` variable and make sure the Kinto Wallet SDK is initialized with that address.
 
 ## Links
 
