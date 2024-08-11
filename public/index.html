@@ -2,19 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico?c=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png?c=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png?c=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png?c=2">
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?c=2" color="#0d0d0d">
+    <meta name="msapplication-TileColor" content="#0d0d0d">
+    <meta name="theme-color" content="#0d0d0d">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="The safe L2 for Finance"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kintoXYZ" />
+    <meta name="twitter:creator" content="@kintoXYZ" />
+    <meta property="og:url" content="https://kinto.xyz/" />
+    <meta property="og:title" content="The safety-first L2 for Finance" />
+    <meta property="og:description"
+      content="Kinto is the first permissionless Ethereum Layer 2 network capable of supporting every modern financial institution and decentralized finance protocol." />
+    <meta property="og:image"
+      content="https://kinto.xyz/card.webp" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,10 +33,19 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Kinto | The Safe L2 for Finance</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+    </form>
+    <form name="email-list" netlify netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+    </form>
     <div id="root"></div>
     <!--
       This HTML file is a template.

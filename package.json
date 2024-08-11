@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@mui/material": "^5.16.7",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,18 +15,32 @@
     "@types/node": "^16.18.104",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "kinto-web-sdk": "^1.0.1",
+    "https-browserify": "^1.0.0",
+    "kinto-web-sdk": "^1.0.2",
+    "numeral": "^2.0.6",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-number-format": "^5.4.0",
     "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "styled-components": "^6.1.12",
+    "terser-webpack-plugin": "^5.3.10",
     "typescript": "^5.5.4",
     "viem": "^2.19.3",
     "web-vitals": "^2.1.4"
   },
+  "resolutions": {
+    "styled-components": "^5",
+    "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest"
+  },
   "scripts": {
-    "start": "HTTPS=true SSL_CRT_FILE=dev.kinto.xyz+3.pem SSL_KEY_FILE=dev.kinto.xyz+3-key.pem PORT=3001 HOST=dev.kinto.xyz react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "HTTPS=true SSL_CRT_FILE=dev.kinto.xyz+3.pem SSL_KEY_FILE=dev.kinto.xyz+3-key.pem PORT=3001 HOST=dev.kinto.xyz craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,6 +62,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/numeral": "^2.0.5",
+    "babel-plugin-styled-components": "^2.1.4"
   }
 }
