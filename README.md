@@ -1,6 +1,6 @@
 # Sample Dapp Using Kinto Wallet SDK
 
-This is a sample application demonstrating the integration of the Kinto Wallet SDK. The Kinto Wallet SDK provides a seamless way to interact with Kinto's Ethereum Layer 2 solution, enabling fast and secure transactions.
+This is a sample application demonstrating the integration of the [Kinto Wallet SDK](https://www.npmjs.com/package/kinto-wallet-sdk). The Kinto Wallet SDK provides a seamless way to interact with Kinto's Ethereum Layer 2 solution, enabling fast and secure transactions.
 
 ## Table of Contents
 
@@ -10,9 +10,9 @@ This is a sample application demonstrating the integration of the Kinto Wallet S
 
 ## Prerequisites
 
-Before using the sample app, ensure you have completed the following steps:
+Before using the sample app, ensure you have a **Kinto Wallet**.
 
-**Kinto Wallet**: In order to test the sample app, you need to have a Kinto account. Create an account by visiting [Kinto Onboarding](https://engen.kinto.xyz/onboarding).
+Create an account by visiting [Kinto Onboarding](https://engen.kinto.xyz/onboarding).
 
 ## Installation
 
