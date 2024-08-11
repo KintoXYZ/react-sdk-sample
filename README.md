@@ -2,7 +2,7 @@
 
 # Sample React Dapp Using Kinto Wallet SDK
 
-This is a sample application demonstrating the integration of the [Kinto Wallet SDK](https://www.npmjs.com/package/kinto-wallet-sdk). The Kinto Wallet SDK provides a seamless way to interact with Kinto's Ethereum Layer 2 solution, enabling fast and secure transactions.
+This is a sample application demonstrating the integration of the [Kinto Wallet SDK](https://www.npmjs.com/package/kinto-web-sdk). The Kinto Wallet SDK provides a seamless way to interact with Kinto's Ethereum Layer 2 solution, enabling fast and secure transactions.
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ Once the application is running, you can explore the features provided by the Ki
 
 ## Links
 
-- **Kinto Wallet SDK Package**: [Kinto Wallet SDK on npm](https://www.npmjs.com/package/kinto-wallet-sdk)
+- **Kinto Wallet SDK Package**: [Kinto Wallet SDK on npm](https://www.npmjs.com/package/kinto-web-sdk)
 - **Kinto Documentation**: [Kinto SDK Documentation](https://docs.kinto.xyz/kinto-the-safe-l2/building-on-kinto/development-setup)
 - **Kinto Developer Portal**: [Kinto Developer Portal](https://engen.kinto.xyz/developers)
 

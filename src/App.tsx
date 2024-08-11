@@ -119,7 +119,7 @@ const KintoConnect = () => {
                       </WalletRowValue>
                     </WalletRow>
                     <WalletRow key="app">
-                      <WalletRowName>App Address</WalletRowName>
+                      <WalletRowName>App</WalletRowName>
                       <WalletRowValue>
                         <StyledMainAddress chainId={7887} address={counterAddress} showExplorer showClipboard />
                       </WalletRowValue>
