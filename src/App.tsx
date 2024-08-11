@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { createKintoSDK } from './sdk';
+import {createKintoSDK, KintoAccountInfo } from 'kinto-web-sdk';
 import { encodeFunctionData, Address, getContract,
   defineChain, createPublicClient, http } from 'viem';
-import { counterAbi, KintoAccountInfo } from './utils';
+import { counterAbi  } from './utils';
 import './App.css';
 
 const kinto = defineChain({
