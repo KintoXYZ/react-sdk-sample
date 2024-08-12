@@ -38,7 +38,27 @@ cd react-sdk-sample
 yarn install
 ```
 
-4. **Start the Application**: Run the app using Yarn.
+4. **Set up a local certificate**: Needed to run the app on https.
+
+```bash
+brew install mkcert
+mkcert -install
+mkcert dev.kinto.xyz localhost 127.0.0.1 ::1
+
+// You should see something like this
+The certificate is at "./dev.kinto.xyz+3.pem" and the key at "./dev.kinto.xyz+3-key.pem" ✅
+```
+
+5. **Set up a local DNS**: Change the `etc/hosts` file to run the app locally on dev.kinto.xyz.
+
+```bash
+sudo nano /etc/hosts
+
+// Add the following line and save the file
+127.0.0.1       dev.kinto.xyz
+```
+
+6. **Start the Application**: Run the app using Yarn.
 
 ```bash
 yarn start
