@@ -197,6 +197,7 @@ const KintoConnect = () => {
                     </WalletRow>
                     {kycViewerInfo && (
                       <>
+
                         <WalletRow key="isIndividual">
                           <WalletRowName>Is Individual</WalletRowName>
                           <WalletRowValue>
@@ -236,6 +237,9 @@ const KintoConnect = () => {
                       </WalletRowValue>
                     </WalletRow>
                   </WalletRows>
+                  <WalletNotice>
+                    <span>Attention!</span> Only send funds to your wallet address in the Kinto Network
+                  </WalletNotice>
                   {accountInfo && (
                     <PrimaryButton onClick={increaseCounter}>
                       Increase Counter
