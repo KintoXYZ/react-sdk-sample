@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 html,
 body {
   font-family: SpaceGrotesk, Arial, Helvetica, sans-serif;
@@ -11,7 +15,7 @@ body {
 }
 
 .quad-app.quad-modal{
-  background-color: white !important;
+  background-color: black !important;
 }
 
 [role="dialog"] {
