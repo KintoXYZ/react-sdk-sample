@@ -4,13 +4,11 @@ import {
   encodeFunctionData, Address, getContract,
   defineChain, createPublicClient, http
 } from 'viem';
-import styled from 'styled-components';
-import AppHeader from 'components/shared/AppHeader';
-import AppFooter from 'components/shared/AppFooter';
-import {
-  BaseScreen, BaseHeader, LearnLink, KintoAddress,
-  GlobalLoader, PrimaryButton
-} from 'components/shared';
+
+import Header from 'components/Header/Header';
+import Projects from 'components/Projects/Projects';
+
+
 import { BREAKPOINTS } from 'config';
 import { ReactComponent as CreditImage } from './credit.svg';
 import numeral from 'numeral';
@@ -182,223 +180,21 @@ const KintoConnect = () => {
 
   // todo: add info about the dev portal and link
   return (
-    <WholeWrapper>
-      <AppWrapper>
-        <ContentWrapper>
-          <AppHeader />
-          <BaseScreen>
-            {accountInfo && (
-              <BgWrapper>
-                <CounterWrapper>
-                  <div className='flex justify-center text-3xl'>
-                    <h1>Projects</h1>
-                  </div>
-                  {!accountInfo.walletAddress && (
-                    <PrimaryButton onClick={kintoLogin}>
-                      Login/Signup
-                    </PrimaryButton>
-                  )}
-                  <div>
-                    <h1>{counter}</h1>
-                  </div>
-                  {accountInfo && (
-                    <PrimaryButton onClick={increaseCounter}>
-                      Increase Counter
-                    </PrimaryButton>
-                  )}
-                  <LearnLink link={"https://docs.kinto.xyz"} text="Learn more about the Kinto Wallet SDK" />
-                </CounterWrapper>
-              </BgWrapper>
-            )}
-            {!accountInfo && (
-              <GlobalLoader />
-            )}
-          </BaseScreen>
-          <AppFooter />
-        </ContentWrapper>
-      </AppWrapper>
-    </WholeWrapper>
+    <main>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <Projects />
+      </div>
+    </main>
   );
 }
 
-const WholeWrapper = styled.div`
-  flex-flow: column nowrap;
-  height: auto;
-  align-items: center;
-  width: 100%;
-  display: flex;
-  min-height: 100vh;
-  min-width: 100vw;
-  position: relative;
-`;
-
-const AppWrapper = styled.div`
-  flex-flow: column nowrap;
-  height: auto;
-  align-items: center;
-  width: 100%;
-  display: flex;
-  min-height: 85vh;
-  min-width: 100vw;
-
-  @media only screen and (max-width: 400px) {
-    min-height: 90vh;
-  }
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  height: auto;
-  min-height: 100vh;
-  width: 100%;
-  background: url(engen/commitment.svg) no-repeat;
-  background-position-x: right;
-  background-size: auto;
-  overflow: hidden;
-`;
-
-const BgWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  flex-flow: column nowrap;
-  justify-content: center;
-`;
-
-const CounterWrapper = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 16px 0;
-`;
-
-const WalletRows = styled.div`
-  display: flex;
-  padding-top: 16px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  align-self: stretch;
-  max-width: 800px;
-  border-top: 1px solid var(--light-grey3);
-`;
-
-const WalletRow = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  padding-bottom: 16px;
-  align-items: center;
-  gap: 32px;
-  align-self: stretch;
-  border-bottom: 1px solid var(--light-grey3);
-  width: 100%;
-  overflow: hidden;
-`;
-
-const WalletRowName = styled.div`
-  width: 150px;
-  color: var(--night);
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-
-  @media only screen and (max-width: ${BREAKPOINTS.mobile}) {
-    width: 60px;
-    font-size: 14px;
-  }
-`;
-
-const WalletRowValue = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 8px;
-  flex: 1 0 0;
-  align-self: stretch;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 120%;
-
-  @media only screen and (max-width: ${BREAKPOINTS.mobile}) {
-    font-size: 20px;
-  }
-`;
-
-const StyledCreditImage = styled(CreditImage)`
-  height: 28px;
-  width: 28px;
-`;
-
-const KintoLabel = styled.div`
-  color: var(--night);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 120%; /* 28.8px */
-  @media only screen and (max-width: ${BREAKPOINTS.mobile}) {
-    font-size: 20px;
-  }
-`;
-
-const StyledMainAddress = styled(KintoAddress)`
-  > div {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  gap: 16px;
-  svg {
-    width: 32px;
-    height: 32px;
-  }
-  div {
-    border: none;
-    padding: 0;
-    justify-content: flex-start;
-
-    div div {
-      width: calc(100% - 84px);
-    }
-  }
-
-  svg {
-    width: 32px;
-    height: 32px;
-  }
-`;
-
-const WalletNotice = styled.div`
-  color: var(--dark-grey);
-  font-size: 18px;
-  font-weight: 400;
-  width: 95%;
-
-  span {
-    color: var(--orange);
-    font-weight: 700;
-  }
-`;
-
-const ETHValue = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  gap: 8px;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 120%;
-  color: var(--night);
-
-  @media only screen and (max-width: ${BREAKPOINTS.mobile}) {
-    font-size: 24px;
-  }
-
-`;
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-black">
       <KintoConnect />
     </div>
   );

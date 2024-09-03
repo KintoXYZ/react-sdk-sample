@@ -15,7 +15,7 @@ body {
 }
 
 .quad-app.quad-modal{
-  background-color: white !important;
+  background-color: black !important;
 }
 
 [role="dialog"] {
