@@ -16,6 +16,7 @@ import { ReactComponent as CreditImage } from './credit.svg';
 import numeral from 'numeral';
 import contractsJSON from '../public/abis/7887.json';
 import './App.css';
+import 'index.css';
 
 interface KYCViewerInfo {
   isIndividual: boolean;
@@ -26,7 +27,34 @@ interface KYCViewerInfo {
   getWalletOwners: Address[];
 }
 
-export const counterAbi = [{ "type": "constructor", "inputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "count", "inputs": [], "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }], "stateMutability": "view" }, { "type": "function", "name": "increment", "inputs": [], "outputs": [], "stateMutability": "nonpayable" }];
+export const counterAbi = [
+  {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+  },
+  {
+      "inputs": [],
+      "name": "count",
+      "outputs": [
+          {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "inputs": [],
+      "name": "increment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+  }
+]
+;
 
 const kinto = defineChain({
   id: 7887,
@@ -53,8 +81,8 @@ const KintoConnect = () => {
   const [kycViewerInfo, setKYCViewerInfo] = useState<any | undefined>(undefined);
   const [counter, setCounter] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const kintoSDK = createKintoSDK('0x14A1EC9b43c270a61cDD89B6CbdD985935D897fE');
-  const counterAddress = "0x14A1EC9b43c270a61cDD89B6CbdD985935D897fE" as Address;
+  const kintoSDK = createKintoSDK('0x028265894cf4c50ce750c7b90ebd4f596881cdd0');
+  const counterAddress = "0x028265894cf4c50ce750c7b90ebd4f596881cdd0" as Address;
 
   async function kintoLogin() {
     try {
@@ -162,84 +190,17 @@ const KintoConnect = () => {
             {accountInfo && (
               <BgWrapper>
                 <CounterWrapper>
-                  <BaseHeader
-                    title="Kinto Wallet SDK Sample App" />
+                  <div className='flex justify-center text-3xl'>
+                    <h1>Projects</h1>
+                  </div>
                   {!accountInfo.walletAddress && (
                     <PrimaryButton onClick={kintoLogin}>
                       Login/Signup
                     </PrimaryButton>
                   )}
-                  <WalletRows>
-                    <WalletRow key="chain">
-                      <WalletRowName>Chain</WalletRowName>
-                      <WalletRowValue>
-                        <StyledCreditImage />
-                        <KintoLabel>Kinto (ID: 7887)</KintoLabel>
-                      </WalletRowValue>
-                    </WalletRow>
-                    <WalletRow key="app">
-                      <WalletRowName>App</WalletRowName>
-                      <WalletRowValue>
-                        <StyledMainAddress chainId={7887} address={counterAddress} showExplorer showClipboard />
-                      </WalletRowValue>
-                    </WalletRow>
-                    <WalletRow key="address">
-                      <WalletRowName>Wallet</WalletRowName>
-                      <WalletRowValue>
-                        <StyledMainAddress chainId={7887} address={accountInfo.walletAddress as Address} showExplorer showClipboard />
-                      </WalletRowValue>
-                    </WalletRow>
-                    <WalletRow key="Application Key">
-                      <WalletRowName>App Key</WalletRowName>
-                      <WalletRowValue>
-                        <StyledMainAddress chainId={7887} address={accountInfo.appKey as Address} showExplorer showClipboard />
-                      </WalletRowValue>
-                    </WalletRow>
-                    {kycViewerInfo && (
-                      <>
-
-                        <WalletRow key="isIndividual">
-                          <WalletRowName>Is Individual</WalletRowName>
-                          <WalletRowValue>
-                            <ETHValue>{kycViewerInfo.isIndividual ? 'Yes' : 'No'}</ETHValue>
-                          </WalletRowValue>
-                        </WalletRow>
-                        <WalletRow key="isCorporate">
-                          <WalletRowName>Is Corporate</WalletRowName>
-                          <WalletRowValue>
-                            <ETHValue>{kycViewerInfo.isCorporate ? 'Yes' : 'No'}</ETHValue>
-                          </WalletRowValue>
-                        </WalletRow>
-                        <WalletRow key="isKYC">
-                          <WalletRowName>Is KYC</WalletRowName>
-                          <WalletRowValue>
-                            <ETHValue>{kycViewerInfo.isKYC ? 'Yes' : 'No'}</ETHValue>
-                          </WalletRowValue>
-                        </WalletRow>
-                        <WalletRow key="isSanctionsSafe">
-                          <WalletRowName>Is Sanctions Safe</WalletRowName>
-                          <WalletRowValue>
-                            <ETHValue>{kycViewerInfo.isSanctionsSafe ? 'Yes' : 'No'}</ETHValue>
-                          </WalletRowValue>
-                        </WalletRow>
-                        <WalletRow key="country">
-                          <WalletRowName>Country</WalletRowName>
-                          <WalletRowValue>
-                            <ETHValue>{kycViewerInfo.getCountry}</ETHValue>
-                          </WalletRowValue>
-                        </WalletRow>
-                      </>
-                    )}
-                    <WalletRow key="counter">
-                      <WalletRowName>Counter</WalletRowName>
-                      <WalletRowValue>
-                        <ETHValue>{counter}</ETHValue>
-                      </WalletRowValue>
-                    </WalletRow>
-                  </WalletRows>
-                  <WalletNotice>
-                    <span>Attention!</span> Only send funds to your wallet address in the Kinto Network
-                  </WalletNotice>
+                  <div>
+                    <h1>{counter}</h1>
+                  </div>
                   {accountInfo && (
                     <PrimaryButton onClick={increaseCounter}>
                       Increase Counter
